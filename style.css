@@ -1,0 +1,493 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    color:white;
+    overflow-x:hidden;
+    background: linear-gradient(135deg, #0a0e27 0%, #16213e 25%, #0f3460 50%, #1a1a2e 75%, #0a0e27 100%);
+    background-size: 400% 400%;
+    animation: techShift 20s ease infinite;
+    position: relative;
+    min-height: 100vh;
+}
+
+@keyframes techShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(0, 255, 200, 0.05) 25%, rgba(0, 255, 200, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 200, 0.05) 75%, rgba(0, 255, 200, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 255, 200, 0.05) 25%, rgba(0, 255, 200, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 200, 0.05) 75%, rgba(0, 255, 200, 0.05) 76%, transparent 77%, transparent);
+    background-size: 60px 60px;
+    animation: gridScroll 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gridScroll {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 60px 60px;
+    }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 30%, rgba(0, 255, 200, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 85% 70%, rgba(0, 100, 255, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(100, 50, 255, 0.1) 0%, transparent 40%);
+    animation: glowPulse 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image: 
+        radial-gradient(circle, rgba(0, 255, 200, 0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(0, 100, 255, 0.6) 1.5px, transparent 1.5px),
+        radial-gradient(circle, rgba(100, 50, 255, 0.7) 1px, transparent 1px);
+    background-size: 80px 80px, 120px 120px, 150px 150px;
+    background-position: 0 0, 40px 60px, 75px 75px;
+    opacity: 0.6;
+    animation: particleFloat 40s linear infinite;
+    pointer-events:none;
+    z-index: 1;
+}
+
+@keyframes particleFloat {
+    0% {
+        background-position: 0 0, 40px 60px, 75px 75px;
+    }
+    100% {
+        background-position: 80px 0, 120px 60px, 150px 75px;
+    }
+}
+
+@keyframes move{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-200px);
+    }
+}
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:20px 10%;
+    backdrop-filter:blur(15px);
+    background:rgba(10, 14, 39, 0.7);
+    z-index:1000;
+    border-bottom: 1px solid rgba(0, 255, 200, 0.2);
+    box-shadow: 0 0 30px rgba(0, 255, 200, 0.1);
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#00ffc8;
+    font-size:28px;
+    font-weight:700;
+    text-shadow: 0 0 10px rgba(0, 255, 200, 0.8), 0 0 20px rgba(0, 100, 255, 0.5);
+    animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(0, 255, 200, 0.8), 0 0 20px rgba(0, 100, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 255, 200, 1), 0 0 40px rgba(0, 100, 255, 0.8);
+    }
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00ffc8;
+    text-shadow: 0 0 10px rgba(0, 255, 200, 0.8);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffc8, #0064ff);
+    box-shadow: 0 0 10px #00ffc8;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 10%;
+    position: relative;
+    z-index: 10;
+    margin-top: 80px;
+}
+
+.hero-content{
+    animation:fadeUp 1.5s ease;
+}
+
+.hero h1{
+    font-size:60px;
+}
+
+.hero span{
+    color:#00ffc8;
+    text-shadow: 0 0 10px #00ffc8, 0 0 20px rgba(0, 100, 255, 0.5);
+    animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 10px #00ffc8;
+    }
+    50% {
+        text-shadow: 0 0 20px #00ffc8, 0 0 30px rgba(0, 100, 255, 0.8);
+    }
+}
+
+.typing{
+    margin:20px 0;
+    overflow:hidden;
+    border-right:3px solid white;
+    white-space:nowrap;
+    width:0;
+    animation:
+        typing 4s steps(30,end) infinite,
+        blink .8s infinite;
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:100%}
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.buttons a{
+    display:inline-block;
+    padding:12px 28px;
+    margin:10px;
+    border-radius:30px;
+    background: linear-gradient(135deg, #00ffc8, #0064ff);
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+    border: 1px solid rgba(0, 255, 200, 0.3);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.buttons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.buttons a:hover::before {
+    left: 100%;
+}
+
+.buttons a:hover{
+    transform:translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 200, 0.8), 0 0 50px rgba(0, 100, 255, 0.5);
+}
+
+section{
+    padding:100px 10%;
+    position: relative;
+    z-index: 10;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:40px;
+    color:#00ffc8;
+    font-size: 36px;
+    text-shadow: 0 0 10px #00ffc8, 0 0 20px rgba(0, 100, 255, 0.4);
+}
+
+.glass{
+    background:rgba(0, 20, 50, 0.4);
+    backdrop-filter:blur(12px);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    border: 1px solid rgba(0, 255, 200, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.1), inset 0 0 20px rgba(0, 255, 200, 0.05);
+}
+
+.skills,
+.projects{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card,
+.project{
+    background:rgba(0, 20, 50, 0.5);
+    backdrop-filter:blur(12px);
+    padding:25px;
+    border-radius:15px;
+    min-width:220px;
+    transition:.4s;
+    border: 1px solid rgba(0, 255, 200, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before,
+.project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 200, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.card:hover::before,
+.project:hover::before {
+    left: 100%;
+}
+
+.card:hover,
+.project:hover{
+    transform:translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 255, 200, 0.6), inset 0 0 20px rgba(0, 255, 200, 0.1);
+    border-color: rgba(0, 255, 200, 0.6);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    nav ul{
+        display:none;
+    }
+}
+.contact {
+    padding: 100px 10%;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #00ffc8;
+    font-size: 36px;
+    text-shadow: 0 0 10px #00ffc8, 0 0 20px rgba(0, 100, 255, 0.4);
+    animation: slideInLeft 0.6s ease;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease;
+}
+
+.contact-item {
+    background: rgba(0, 20, 50, 0.5);
+    backdrop-filter: blur(12px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 200, 0.3);
+    min-width: 300px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 200, 0.2), transparent);
+    transition: left 0.6s;
+    z-index: -1;
+}
+
+.contact-item:hover::before {
+    left: 100%;
+}
+
+.contact-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 200, 0.6), inset 0 0 20px rgba(0, 255, 200, 0.1);
+    border-color: rgba(0, 255, 200, 0.6);
+}
+
+.contact-item h3 {
+    text-align: center;
+    color: #00ffc8;
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-shadow: 0 0 10px #00ffc8;
+}
+
+.contact-item a {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 10px;
+}
+
+.contact-item a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffc8, #0064ff);
+    box-shadow: 0 0 10px #00ffc8;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.contact-item a:hover {
+    color: #00ffc8;
+    text-shadow: 0 0 10px #00ffc8;
+}
+
+.contact-item a:hover::after {
+    width: 100%;
+}
+h1{
+    text-align:center;
+    color:white;
+    margin-top:10px;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
